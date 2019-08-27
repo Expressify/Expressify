@@ -1,6 +1,5 @@
 # SpyPress - A Server Visualizer
 ###### Developed by: Ruth Anam, Michelle Herrera, Mark Shin and Anthony Toreson
-TESTING!!!
 ## TL;DR 
 ### What is SpyPress?
 SpyPress is a lightweight, open source tool designed to help developers visualize requests from the client.
