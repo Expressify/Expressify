@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Spypress/Spypress.git"
+    "url": "git+https://github.com/Lightningcomm/Lightningcomm.git"
   },
   "contributors": ["Andy Wong", "Anthony Toreson", "Courtney Kwong", "Jackie Lin", 
     "Mark Shin", "Michelle Herrera", "Olga Naumova", "Ruthba Anam"],
@@ -68,7 +68,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "bugs": {
-    "url": "https://github.com/Spypress/Spypress/issues"
+    "url": "https://github.com/Lightningcomm/Lightningcomm/issues"
   },
-  "homepage": "https://github.com/Spypress/Spypress#readme"
+  "homepage": "https://github.com/Lightningcomm/Lightningcomm#readme"
 }
