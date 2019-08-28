@@ -10,7 +10,7 @@ const mapStateToProps = store => ({
 
 //Initialize method for props to use;
 const mapDispatchToProps = dispatch => ({
-  socketMessage: data => dispatch(actions.addMessage(data))
+  addMessage: data => dispatch(actions.addMessage(data))
 });
 
 //Created Class component called Connection => THIS IS OUR MAIN CONTAINER TO RENDER;
@@ -27,10 +27,14 @@ class Connection extends Component {
 
     //Added eventListener to listen for any data coming inside websocket server;
     socket.addEventListener ('message', (event) => {
+      // console.log('event in addEventListener', event.data)
+      let parsedHeader = JSON.parse(event.data);
+      // console.log(parsedHeader.body)
+      // console.log(parsedHeader.type)
       //Send data received to reducer function;
-      this.props.socketMessage(JSON.parse(event.data));
+      this.props.addMessage(JSON.parse(event.data));
     });
-  }
+  } 
 
   render() {
     //Initalize empty array to render each child component. (We're going to have more than one depending on how many requests we received)
@@ -40,6 +44,7 @@ class Connection extends Component {
 
     //Loop through each element inside messageArr (which is an object and send it down to child components);
     messageArr.forEach((el, index) => {
+      console.log(messageArr)
       //el = data object we pushed in. => send it down into the child component as a property/attribute;
       infoHolder.push(<Message key={`${el}` + index } info={el}/>);
     })
@@ -52,6 +57,8 @@ class Connection extends Component {
     return infoHolder;
   }
 }
+
+
 
 //Needed to use mapStateToProps & mapDispatchToProps then export Main Container;
 export default connect(mapStateToProps,mapDispatchToProps)(Connection);
