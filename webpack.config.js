@@ -24,6 +24,8 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env", "@babel/preset-react"]
+            
+            
           }
         }
       },
@@ -34,5 +36,6 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
-  }
+  },
+  // plugins: ["transform-es2015-modules-commonjs"]
 };
