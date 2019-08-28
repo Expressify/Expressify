@@ -37,6 +37,11 @@ wss.on("connection", function connection(ws) {
     next();
   });
   //[INSERT YOUR ROUTES HERE];
+  app.get('/api/test', (req, res) => {
+    fetch('https://pokeapi.co/api/v2/pokemon/bibarel').
+      then(data => data.json())
+      .then(data => res.status(200).send(data))
+  })
 });
 
 //Running NPM START. Need to go to localhost:3000/prod to view page.
@@ -46,11 +51,6 @@ app.get('/prod', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 })
 
-app.get('/api/test', (req, res) => {
-  fetch('https://pokeapi.co/api/v2/pokemon/bibarel').
-    then(data => data.json())
-    .then(data => res.status(200).send(data))
-})
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...");
