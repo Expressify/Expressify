@@ -6,7 +6,7 @@ describe('Message Array Reducers', () => {
 
     beforeEach(()=> {
         state = {
-            messageArr : []
+            messageArray : []
         };
     })
 
@@ -29,9 +29,9 @@ describe('Message Array Reducers', () => {
                         payload: 'HI THERE'};
         
         it('adds a message to the message array in state and increases total messages count by 1', () => {
-            const { messageArr } = reducers(state, action);
-            expect(messageArr[0]).toEqual('HI THERE');
-            expect(messageArr.length).toEqual(1);
+            const { messageArray } = reducers(state, action);
+            expect(messageArray[0]).toEqual('HI THERE');
+            expect(messageArray.length).toEqual(1);
         })
 
     })
