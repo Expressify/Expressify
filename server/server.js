@@ -3,11 +3,12 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const WebSocket = require("ws");
 const path = require('path');
+const fetch = require('node-fetch');
 //Websocket Connection to port 2000;
 const wss = new WebSocket.Server({ port: 2000 });
 
 //Event listener for WebSocket Connection.
-wss.on("connection", function connection(ws) { 
+wss.on("connection", function connection(ws) {
 
   //ON Connection parse all requests & cookies
   app.use(express.json());
@@ -21,7 +22,7 @@ wss.on("connection", function connection(ws) {
       header: null,
       cookies: null,
       body: null,
-      type:null
+      type: null
     };
 
     //Defining any requests that comes in such as Methods, Headers, Cookies & Body.
@@ -36,6 +37,11 @@ wss.on("connection", function connection(ws) {
     next();
   });
   //[INSERT YOUR ROUTES HERE];
+  app.get('/api/test', (req, res) => {
+    fetch('https://pokeapi.co/api/v2/pokemon/bibarel').
+      then(data => data.json())
+      .then(data => res.status(200).send(data))
+  })
 });
 
 //Running NPM START. Need to go to localhost:3000/prod to view page.
@@ -44,6 +50,7 @@ app.use('/build', express.static(path.join(__dirname, '../build')))
 app.get('/prod', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 })
+
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...");
