@@ -5,7 +5,7 @@ class Response extends Component {
         super(props);
     }
     render() {
-      console.log('props message:', this.props.message)
+      // console.log('props message:', this.props.message)
       const stringifiedMessage = JSON.stringify(this.props.message);
       
     return (
