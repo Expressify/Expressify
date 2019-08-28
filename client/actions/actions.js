@@ -11,7 +11,7 @@
 import * as types from "./actionTypes";
 
 //For reducer to grab and use;
-export const addMessage = message => ({
+export const addMessage = data => ({
   type: types.ADD_MESSAGE,
-  payload: message // Data OBJECT we sent from the server;
+  payload: data // Data OBJECT we sent from the server;
 });

@@ -10,7 +10,7 @@ const mapStateToProps = store => ({
 
 //Initialize method for props to use;
 const mapDispatchToProps = dispatch => ({
-  socketMessage: data => dispatch(actions.addMessage(data))
+  addMessage: data => dispatch(actions.addMessage(data))
 });
 
 //Created Class component called Connection => THIS IS OUR MAIN CONTAINER TO RENDER;
@@ -27,12 +27,12 @@ class Connection extends Component {
 
     //Added eventListener to listen for any data coming inside websocket server;
     socket.addEventListener ('message', (event) => {
-      // console.log('event in addEventListener', event.data)
+      console.log('event in addEventListener', event.data)
       let parsedHeader = JSON.parse(event.data);
       console.log(parsedHeader.body)
       console.log(parsedHeader.type)
       //Send data received to reducer function;
-      this.props.socketMessage(JSON.parse(event.data));
+      this.props.addMessage(JSON.parse(event.data));
     });
   } 
 
