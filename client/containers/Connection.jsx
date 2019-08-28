@@ -27,10 +27,10 @@ class Connection extends Component {
 
     //Added eventListener to listen for any data coming inside websocket server;
     socket.addEventListener ('message', (event) => {
-      console.log('event in addEventListener', event.data)
+      // console.log('event in addEventListener', event.data)
       let parsedHeader = JSON.parse(event.data);
-      console.log(parsedHeader.body)
-      console.log(parsedHeader.type)
+      // console.log(parsedHeader.body)
+      // console.log(parsedHeader.type)
       //Send data received to reducer function;
       this.props.addMessage(JSON.parse(event.data));
     });
@@ -44,6 +44,7 @@ class Connection extends Component {
 
     //Loop through each element inside messageArr (which is an object and send it down to child components);
     messageArr.forEach((el, index) => {
+      console.log(messageArr)
       //el = data object we pushed in. => send it down into the child component as a property/attribute;
       infoHolder.push(<Message key={`${el}` + index } info={el}/>);
     })

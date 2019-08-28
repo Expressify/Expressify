@@ -39,6 +39,8 @@ body {
   background-color: $sec-background;
   max-height: 100%;
   overflow-y: scroll;
+  overflow-x: scroll;
+  overflow-wrap: break-word;
   h3 {
     margin-left: 1rem;
   }
@@ -52,6 +54,8 @@ body {
   background-color: $sec-background;
   max-height: 100%;
   overflow-y: scroll;
+  overflow-x: scroll;
+  overflow-wrap: break-word;
   h3 {
     margin-left: 1rem;
   }

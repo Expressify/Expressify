@@ -1,4 +1,7 @@
 import React from "react";
+import Request from './Request.jsx';
+import Response from './Response.jsx';
+
 
 /*
   Now each data we have access to inside this component is very unpleasing to the eye;
@@ -27,11 +30,15 @@ import React from "react";
 */
 
 const Message = props => {
-    console.log(props.info)
+    console.log('props.info in message cpt', props.info);
+    // const resDisplay = [];
+    if (props.info.body && props.info.cookies && props.info.header && props.info.type ) {
+      return (
+        <Request message={props.info}/>
+      )
+    }
     return (
-    <div className="message-container">
-      
-    </div>
+    <Response message ={props.info}/>
   )
 };
 
