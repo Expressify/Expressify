@@ -23,7 +23,7 @@ wss.on("connection", function connection(ws) {
       body: null,
       type:null
     };
-
+    
     //Defining any requests that comes in such as Methods, Headers, Cookies & Body.
     !req.method ? data.type = 'Method not sent' : data.type = req.method;
     !req.headers ? data.header = 'Headers not sent' : data.header = req.headers;

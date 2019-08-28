@@ -27,10 +27,14 @@ class Connection extends Component {
 
     //Added eventListener to listen for any data coming inside websocket server;
     socket.addEventListener ('message', (event) => {
+      // console.log('event in addEventListener', event.data)
+      let parsedHeader = JSON.parse(event.data);
+      console.log(parsedHeader.body)
+      console.log(parsedHeader.type)
       //Send data received to reducer function;
       this.props.socketMessage(JSON.parse(event.data));
     });
-  }
+  } 
 
   render() {
     //Initalize empty array to render each child component. (We're going to have more than one depending on how many requests we received)
@@ -52,6 +56,8 @@ class Connection extends Component {
     return infoHolder;
   }
 }
+
+
 
 //Needed to use mapStateToProps & mapDispatchToProps then export Main Container;
 export default connect(mapStateToProps,mapDispatchToProps)(Connection);
