@@ -6,8 +6,18 @@ const WebSocket = require("ws");
 module.exports = (app) => {
     //create new ws instance
     const newWS = new WebSocket(app);
+    //serves our gui page;
+    const closedGUI = (res) => {
+        let counter = 0;
+        const renderHTML = () => res.sendFile('../public/index.html');
+        if (counter === 1) renderHTML();
+        counter++;
+    }
+    const closedGUIRes = closedGUI(res)
     //how our middleware intercepts andy's http req to our gui;
     app.use('*', (req, res, next) => {
+        //oncified closedGUI;
+        closedGUIRes();
         fetch('/dev-tools')
             .then(data => data.json())
             .then(response => {
@@ -16,12 +26,16 @@ module.exports = (app) => {
                 console.log('should have rendered response:', response)
                 ws.send(response)
             })
-    })
-    //do app.use to caputure all incoming/outgoing http reqs from andy's app;
-        //fetch our /dev-tools to spin up our gui
-    // app.get(‘/lightning-comm’, (req,res)=> res.sendFile(‘path/to/gui/html’));
-    //reassign the res,send fx;
 
+    })
+   
+
+    // const ligntningComm = {
+    //     newInstance: new WebSocket(app),
+    //     spyInto: ,
+    //     redefinedSend:
+    // }
+    //reassign the res,send fx;
 }
 
 // TODO: Refactor server.js (Line 40) to route all user requests through this middleware
